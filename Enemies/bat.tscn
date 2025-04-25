@@ -1,0 +1,129 @@
+[gd_scene load_steps=21 format=3 uid="uid://nvqio2vynng4"]
+
+[ext_resource type="Script" uid="uid://3a8p7ebfxhsi" path="res://Enemies/bat.gd" id="1_g687e"]
+[ext_resource type="Texture2D" uid="uid://douknln0y6erf" path="res://Enemies/Bat.png" id="1_p2utt"]
+[ext_resource type="Texture2D" uid="uid://2wr6m1bfbn4t" path="res://Shadows/SmallShadow.png" id="2_vut0d"]
+[ext_resource type="PackedScene" uid="uid://hdqv5rwyueit" path="res://Overlap/hurtbox.tscn" id="3_va2ne"]
+[ext_resource type="PackedScene" uid="uid://1grev1g6qj3f" path="res://stats.tscn" id="5_i84q7"]
+[ext_resource type="PackedScene" uid="uid://b6h36fxb10u6x" path="res://Enemies/player_detection_zone.tscn" id="6_nc5xu"]
+[ext_resource type="PackedScene" uid="uid://di1yfcx37tj44" path="res://Overlap/hitbox.tscn" id="7_0g1cs"]
+[ext_resource type="PackedScene" uid="uid://cmpllkite6yvm" path="res://Overlap/SoftCollision.tscn" id="8_ppg8i"]
+[ext_resource type="PackedScene" uid="uid://bifelh4f1ag8w" path="res://Enemies/wander_controler.tscn" id="9_srckj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vut0d"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va2ne"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g687e"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i84q7"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc5xu"]
+atlas = ExtResource("1_p2utt")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0g1cs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vut0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va2ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g687e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i84q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc5xu")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppg8i"]
+radius = 4.12311
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g687e"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0g1cs"]
+radius = 63.1269
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srckj"]
+radius = 4.12311
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2gqn"]
+radius = 4.0
+
+[node name="Bat" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_g687e")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0g1cs")
+animation = &"Fly"
+autoplay = "Fly"
+frame_progress = 0.661031
+offset = Vector2(0, -12)
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vut0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ppg8i")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_va2ne")]
+visible = false
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_g687e")
+
+[node name="Stats" parent="." instance=ExtResource("5_i84q7")]
+max_health = 2
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("6_nc5xu")]
+visible = false
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+modulate = Color(1, 1, 1, 0.243137)
+shape = SubResource("CircleShape2D_0g1cs")
+
+[node name="Hitbox" parent="." instance=ExtResource("7_0g1cs")]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_srckj")
+
+[node name="SoftCollision" parent="." instance=ExtResource("8_ppg8i")]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+shape = SubResource("CircleShape2D_s2gqn")
+
+[node name="WanderControler" parent="." instance=ExtResource("9_srckj")]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+
+[editable path="Hurtbox"]
+[editable path="PlayerDetectionZone"]
+[editable path="Hitbox"]
+[editable path="SoftCollision"]
