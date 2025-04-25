@@ -26,7 +26,7 @@ var state = CHASE
 @onready var hurtbox = $Hurtbox
 @onready var softcollision = $SoftCollision
 @onready var wanderController = $WanderControler
-#@onready var animationPlayer = $AnimationPlayer
+@onready var animationPlayer = $AnimationPlayer
 #@onready var particles = $GPUParticles2D
 
 func _ready():
@@ -83,9 +83,16 @@ func _on_hurtbox_area_entered(area):
 	stats.health -= area.damage
 	velocity = area.knockback_vector * 150
 	hurtbox.create_hit_effect()
+	hurtbox.start_invincibility(0.4)
 
 func _on_stats_no_health():
 	queue_free() #设置当生命值为0时做什么，可以转入二阶段
 	var enemyDeathEffect = EnemyDeathEffect.instantiate()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
+
+func _on_hurtbox_invinciblility_started() -> void:
+	animationPlayer.play("Start")
+
+func _on_hurtbox_invinciblility_ended() -> void:
+	animationPlayer.play("Stop")
