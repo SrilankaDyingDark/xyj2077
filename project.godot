@@ -11,9 +11,8 @@ config_version=5
 [application]
 
 config/name="XYJ2077"
-run/main_scene="uid://byltx7filpmq8"
+run/main_scene="uid://juvqpyx35nk7"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
