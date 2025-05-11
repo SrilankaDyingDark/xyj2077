@@ -1973,5 +1973,7 @@ offset_top = 3.0
 offset_right = 67.0
 offset_bottom = 19.0
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [editable path="Camera2D"]
 [editable path="CanvasLayer/HealthUI"]
