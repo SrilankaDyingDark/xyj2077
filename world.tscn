@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://byltx7filpmq8"]
+[gd_scene load_steps=15 format=4 uid="uid://byltx7filpmq8"]
 
 [ext_resource type="PackedScene" uid="uid://b5y6in3sbavhh" path="res://Player/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://b1hw7yj82qjjo" path="res://World/GrassBackground.png" id="1_tlwt5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://nvqio2vynng4" path="res://Enemies/bat.tscn" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://dctmifehwr53a" path="res://UI/health_ui.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://e5xlpa0k68ai" path="res://World/tree.tscn" id="8_ioo17"]
+[ext_resource type="PackedScene" uid="uid://b7ro015m26nx6" path="res://Boss/boss.tscn" id="10_ic0uy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("2_aqk2v")
@@ -1960,10 +1961,12 @@ position = Vector2(32, 96)
 position = Vector2(236, 176)
 
 [node name="Tree" parent="Ysort" instance=ExtResource("8_ioo17")]
-position = Vector2(232, 56)
+position = Vector2(231, 53)
 
 [node name="Tree2" parent="Ysort" instance=ExtResource("8_ioo17")]
 position = Vector2(120, 160)
+
+[node name="Boss" parent="Ysort" instance=ExtResource("10_ic0uy")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
