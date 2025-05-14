@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://hsc1h47x5b44"]
+
+[ext_resource type="PackedScene" uid="uid://b7ro015m26nx6" path="res://Boss/boss.tscn" id="1_hkgfm"]
+[ext_resource type="PackedScene" uid="uid://bbo872n0ft805" path="res://Scenes_Manager/portal.tscn" id="2_v7cbi"]
+[ext_resource type="PackedScene" uid="uid://b5y6in3sbavhh" path="res://Player/player.tscn" id="3_v7cbi"]
+[ext_resource type="PackedScene" uid="uid://cf6i6j1m43iak" path="res://camera_2d.tscn" id="4_k0xqd"]
+
+[node name="level_1" type="Node2D"]
+
+[node name="Boss" parent="." instance=ExtResource("1_hkgfm")]
+position = Vector2(76, -25)
+
+[node name="portal" parent="." instance=ExtResource("2_v7cbi")]
+position = Vector2(126, -61)
+collision_layer = 1
+next_scene = "res://World.tscn"
+
+[node name="Player" parent="." instance=ExtResource("3_v7cbi")]
+collision_layer = 1
+
+[node name="Camera2D" parent="Player" instance=ExtResource("4_k0xqd")]
+position = Vector2(0, 0)
+
+[node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
+position = Vector2(-224, -124)
+
+[node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
+position = Vector2(312, 203)
+
+[editable path="Player/Camera2D"]

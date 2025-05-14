@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbo872n0ft805"]
+
+[ext_resource type="Script" uid="uid://dk8615n4fwhjl" path="res://Scenes_Manager/portal.gd" id="1_pxawt"]
+[ext_resource type="Texture2D" uid="uid://v7pjpp8jklb1" path="res://Effects/HitEffect.png" id="2_e648k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gmg3"]
+size = Vector2(20, 25)
+
+[node name="portal" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_pxawt")
+
+[node name="HitEffect" type="Sprite2D" parent="."]
+position = Vector2(1.18231, 0.868803)
+rotation = 0.622421
+scale = Vector2(0.515453, 0.586477)
+texture = ExtResource("2_e648k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2gmg3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
