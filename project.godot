@@ -30,6 +30,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="教程"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [importer_defaults]
 
 texture={
