@@ -1,103 +1,72 @@
 extends CharacterBody2D
 
-# 敌人属性
-@export var speed: float = 150.0
-@export var attack_range: float = 100.0
-@export var attack_cooldown: float = 1.5
-@export var detection_range: float = 400.0
-
-# 节点引用
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var attack_timer: Timer = $AttackTimer
-
-# 状态变量
-var target: Node2D = null
-var can_attack: bool = true
-var current_state: String = "idle"
-var last_direction: Vector2 = Vector2.DOWN
+@export var speed = 50.0  # 移动速度
+@onready var animation_tree = $AnimationTree  # 同级目录的AnimationTree
+@onready var animation_state = animation_tree.get("parameters/playback")  # 动画状态机
+@onready var playerDetectionZone = $detection
+@export  var ACCELERATION = 300
+@export  var MAX_SPEED = 30
+@export  var FRICTION = 200
+enum {
+	CHASE,
+	IDLE
+}
 
 func _ready():
-	attack_timer.wait_time = attack_cooldown
-	attack_timer.timeout.connect(_on_attack_cooldown_finished)
+	# 初始化动画树
+	animation_tree.active = true
+	update_animation(Vector2.LEFT)  # 默认向左
 
-func _physics_process(_delta):
-	# 寻找玩家
-	if target == null:
-		find_target()
-		return
-	
-	# 计算到目标的距离和方向
-	var direction = global_position.direction_to(target.global_position)
-	var distance = global_position.distance_to(target.global_position)
-	
-	# 更新最后方向用于动画
-	if direction.length() > 0:
-		last_direction = direction
-	
-	# 状态判断
-	if distance <= attack_range and can_attack:
-		current_state = "attack"
-		attack()
-	elif distance <= detection_range:
-		current_state = "chase"
-		chase(direction)
-	else:
-		current_state = "idle"
-	
-	# 更新动画
-	update_animation()
+var state = IDLE
 
-func find_target():
-	# 这里假设玩家组为"player"，可以根据实际情况调整
-	var players = get_tree().get_nodes_in_group("player")
-	if players.size() > 0:
-		target = players[0]
+func seek_player():
+	if playerDetectionZone.can_see_player():
+		state = CHASE
 
-func chase(direction: Vector2):
-	velocity = direction * speed
+func _physics_process(delta):
+	
+	match state:
+		IDLE:
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			seek_player()
+		CHASE:
+			var player = playerDetectionZone.player
+			if player != null:
+				accelerate_towards_point(player.global_position, delta)
+			else:
+				state = IDLE
+
+func accelerate_towards_point(point, delta):
+	# 计算从Boss到玩家的方向向量
+	var direction = (point - global_position).normalized()
+	
+	# 如果有方向，则更新动画
+	if direction != Vector2.ZERO:
+		update_animation(direction)
+	
+	# 计算加速度向量
+	var acceleration = direction * ACCELERATION
+	
+	# 应用加速度到速度
+	velocity += acceleration * delta
+	
+	# 限制最大速度
+	if velocity.length() > MAX_SPEED:
+		velocity = velocity.normalized() * MAX_SPEED
+	
+	# 移动角色
 	move_and_slide()
 
-func attack():
-	if !can_attack:
-		return
+func update_animation(direction):
+	# 修正动画方向参数（确保动画与移动方向一致）
+	var animation_direction = direction
+	animation_direction.y *= -1  # 反转Y轴方向，适配动画系统
 	
-	# 执行攻击逻辑
-	can_attack = false
-	attack_timer.start()
+	# 设置动画树的方向参数
+	animation_tree.set("parameters/Walk/blend_position", animation_direction)
 	
-	# 这里可以添加实际的攻击效果，如生成伤害区域等
-	# 例如: spawn_hitbox(last_direction)
-	
-	print("Boss发动攻击!")
-
-func _on_attack_cooldown_finished():
-	can_attack = true
-
-func update_animation():
-	var anim_name = current_state + "_" + get_direction_suffix(last_direction)
-	
-	# 检查动画是否存在
-	if animation_player.has_animation(anim_name):
-		animation_player.play(anim_name)
+	if direction != Vector2.ZERO:
+		animation_state.travel("Walk")
 	else:
-		# 回退到默认动画
-		animation_player.play("idle_" + get_direction_suffix(last_direction))
-
-func get_direction_suffix(direction: Vector2) -> String:
-	# 根据方向返回动画后缀
-	if abs(direction.x) > abs(direction.y):
-		return "left" if direction.x < 0 else "right"
-	else:
-		return "up" if direction.y < 0 else "down"
-
-# 可选：添加伤害检测
-func _on_hitbox_area_entered(area):
-	if area.is_in_group("player_attack"):
-		# 处理受到伤害的逻辑
-		take_damage(area.damage)
-
-func take_damage(amount: int):
-	# 受伤逻辑
-	print("Boss受到伤害: ", amount)
-	# 可以添加受伤动画等
+		# 无输入时保持最后方向的行走动画（替代Idle）
+		animation_state.travel("Walk")
