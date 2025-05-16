@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6fmspdcnn151"]
+
+[ext_resource type="PackedScene" uid="uid://e5xlpa0k68ai" path="res://World/tree.tscn" id="1_rq0vd"]
+[ext_resource type="Texture2D" uid="uid://bu8ts4orpmuh6" path="res://World/plates.png" id="2_cxlo0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="stone" parent="." instance=ExtResource("1_rq0vd")]
+
+[node name="Sprite2D" parent="stone" index="1"]
+texture = ExtResource("2_cxlo0")
+hframes = 3
+vframes = 2
+frame = 2
+
+[editable path="stone"]

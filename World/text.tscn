@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bexfmiu4b16sq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74cth"]
+size = Vector2(48, 14)
+
+[node name="RichTextLabel" type="RichTextLabel"]
+offset_left = 37.0
+offset_top = -34.0
+offset_right = 91.0
+offset_bottom = 6.0
+text = "狮驼岭"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26, 21)
+shape = SubResource("RectangleShape2D_74cth")
