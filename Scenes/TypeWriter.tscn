@@ -1,9 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://juvqpyx35nk7"]
+[gd_scene load_steps=61 format=3 uid="uid://juvqpyx35nk7"]
 
 [ext_resource type="FontFile" uid="uid://d1bpmp2584ern" path="res://Scenes/Fonts/AaWeiWeiDianZhenTi-2.ttf" id="1_acd1i"]
 [ext_resource type="Script" uid="uid://dmve38i3sap3p" path="res://Scenes/type_writer.gd" id="1_k4aau"]
 [ext_resource type="Texture2D" uid="uid://dwh5fmo3mbjf1" path="res://Scenes/GlassSea/Batch/sprite.png" id="3_lmf1u"]
 [ext_resource type="PackedScene" uid="uid://c7suwadvx3qmk" path="res://Scenes/Menus/main_menu.tscn" id="4_lmf1u"]
+[ext_resource type="AudioStream" uid="uid://b4uqvgmaaj8jr" path="res://Music and Sounds/TypeWriter.mp3" id="4_srqao"]
 
 [sub_resource type="Theme" id="Theme_8fd2j"]
 default_font = ExtResource("1_acd1i")
@@ -397,6 +398,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_srqao")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8fd2j"]
 _data = {
@@ -436,10 +452,24 @@ libraries = {
 }
 autoplay = "TypeWriter"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [node name="MainMenu" parent="." instance=ExtResource("4_lmf1u")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0666667, 0.0862745, 0.121569, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]

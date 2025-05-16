@@ -1,6 +1,5 @@
-[gd_scene load_steps=39 format=3 uid="uid://c7suwadvx3qmk"]
+[gd_scene load_steps=37 format=3 uid="uid://c7suwadvx3qmk"]
 
-[ext_resource type="Shader" uid="uid://ynuvhiblrjyx" path="res://Scenes/Menus/main_menu.gdshader" id="1_38aua"]
 [ext_resource type="Theme" uid="uid://bfsl6ehejxbjf" path="res://Scenes/Menus/default_theme.tres" id="1_penys"]
 [ext_resource type="Script" uid="uid://ccl2rh1mb4h6r" path="res://Scenes/Menus/main_menu.gd" id="2_aur2u"]
 [ext_resource type="Texture2D" uid="uid://dwh5fmo3mbjf1" path="res://Scenes/GlassSea/Batch/sprite.png" id="3_aur2u"]
@@ -237,11 +236,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pha2q"]
-shader = ExtResource("1_38aua")
-shader_parameter/color_from = Color(0.144086, 0.000107813, 0.450812, 1)
-shader_parameter/color_to = Color(0.0666667, 0.0862745, 0.121569, 1)
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -260,17 +254,6 @@ animation = &"Sea"
 autoplay = "Sea"
 frame_progress = 0.512533
 metadata/_edit_group_ = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_pha2q")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0666667, 0.0862745, 0.121569, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

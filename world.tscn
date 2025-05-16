@@ -1955,18 +1955,12 @@ y_sort_enabled = true
 
 [node name="Bat" parent="Ysort" instance=ExtResource("8_sjtuv")]
 position = Vector2(280, 84)
-collision_layer = 16
-collision_mask = 2
 
 [node name="Bat2" parent="Ysort" instance=ExtResource("8_sjtuv")]
 position = Vector2(32, 96)
-collision_layer = 16
-collision_mask = 2
 
 [node name="Bat3" parent="Ysort" instance=ExtResource("8_sjtuv")]
 position = Vector2(236, 176)
-collision_layer = 16
-collision_mask = 2
 
 [node name="Tree" parent="Ysort" instance=ExtResource("9_cvq6i")]
 position = Vector2(231, 53)
@@ -1984,8 +1978,6 @@ offset_bottom = -48.0
 
 [node name="portal" parent="." instance=ExtResource("11_0to5b")]
 position = Vector2(166, 13)
-collision_layer = 64
-collision_mask = 2
 next_scene = "res://Scenes_level/level_1.tscn"
 
 [editable path="Ysort/Player/Camera2D"]

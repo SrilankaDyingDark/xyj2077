@@ -5,6 +5,7 @@ signal start_game()
 @onready var label = $RichTextLabel
 @onready var animation_player = $AnimationPlayer
 @onready var main_menu: Control = %MainMenu
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 var story_pages = [
 	"2500年，人工智能已经深入每个人的意识，而历史的经典，已不再是过去的记忆，而是一个可以进入、感知、与之互动的现实。\n这是一个梦境与现实交织的时代，唯有勇敢者才能穿越时空，找寻遗失的真相。",
@@ -18,6 +19,7 @@ var can_continue = true
 
 func _ready():
 	show_current_page()
+	color_rect.color.a = 0 #fade-in and fade-out
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and can_continue:
@@ -25,7 +27,16 @@ func _unhandled_input(event):
 		if current_page < story_pages.size():
 			show_current_page()
 		else:
+			#fade-in 
+			var tween := create_tween()
+			tween.tween_property(color_rect, "color:a", 1, 0.2)
+			await tween.finished
+			
 			get_tree().change_scene_to_file("res://world.tscn")
+			
+			#fade-out
+			tween = create_tween()
+			tween.tween_property(color_rect, "color:a", 0, 0.2)
 
 func show_current_page():
 	can_continue = false

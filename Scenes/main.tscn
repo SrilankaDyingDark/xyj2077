@@ -1,19 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://e70o2fd7natg"]
+[gd_scene load_steps=3 format=3 uid="uid://e70o2fd7natg"]
 
 [ext_resource type="Script" uid="uid://djo78awv1emc3" path="res://Scenes/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://c7suwadvx3qmk" path="res://Scenes/Menus/main_menu.tscn" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://juvqpyx35nk7" path="res://Scenes/TypeWriter.tscn" id="3_kry3j"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8gbba")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_jjvhh")]
 
-[node name="MarginContainer" parent="MainMenu" index="2"]
+[node name="MarginContainer" parent="MainMenu" index="1"]
 offset_right = 320.0
 offset_bottom = 180.0
-
-[node name="StoryScene" parent="." instance=ExtResource("3_kry3j")]
-visible = false
 
 [editable path="MainMenu"]

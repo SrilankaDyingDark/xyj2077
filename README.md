@@ -13,6 +13,6 @@
 - [x] Start game menu
 - [x] Live background
 - [x] Typewriter animation for text
-- [ ] Scene change with fade-in and fade-out
+- [x] Scene change with fade-in and fade-out
 - [ ] Pause menu
 - [ ] Music and Sounds
