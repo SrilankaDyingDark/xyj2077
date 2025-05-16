@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://b7ro015m26nx6"]
+[gd_scene load_steps=30 format=3 uid="uid://b7ro015m26nx6"]
 
 [ext_resource type="Script" uid="uid://drpt1n7ygd7hu" path="res://Boss/boss.gd" id="1_4cnrr"]
 [ext_resource type="Texture2D" uid="uid://dw61vmus6xy86" path="res://Boss/Atack.png" id="2_0sshd"]
 [ext_resource type="PackedScene" uid="uid://hdqv5rwyueit" path="res://Overlap/hurtbox.tscn" id="2_6xxrv"]
 [ext_resource type="Texture2D" uid="uid://bb14pvpc6r7d" path="res://Boss/Defense.png" id="3_7ba5a"]
 [ext_resource type="Texture2D" uid="uid://yv1fnc11i0a" path="res://Boss/Walk.png" id="5_0sshd"]
+[ext_resource type="Script" uid="uid://dpd137lnq40qv" path="res://Boss/detection.gd" id="6_mk3vo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3701"]
 radius = 3.99824
@@ -416,72 +417,35 @@ _data = {
 &"run_up": SubResource("Animation_fdnl6")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sri3m"]
-animation = &"Attack left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2j6g7"]
-animation = &"Walk down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_myhfd"]
-animation = &"Walk  right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tjlxr"]
-animation = &"Attack up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_klplh"]
-animation = &"Attack right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_r5hgr"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_sri3m")
-blend_point_0/pos = Vector2(-1, 0.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_2j6g7")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_myhfd")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_tjlxr")
-blend_point_3/pos = Vector2(0, -0.9)
-blend_point_4/node = SubResource("AnimationNodeAnimation_klplh")
-blend_point_4/pos = Vector2(1, 0)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0sshd"]
-animation = &"Walk left"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ba5a"]
-animation = &"Walk down"
+animation = &"run_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mk3vo"]
-animation = &"Walk  right"
+animation = &"run_up"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ju3tf"]
-animation = &"Walk up"
+animation = &"run_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ntee4"]
-animation = &"Walk  right"
+animation = &"run _right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_sri3m"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_0sshd")
+blend_point_0/node = SubResource("AnimationNodeAnimation_7ba5a")
 blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_7ba5a")
+blend_point_1/node = SubResource("AnimationNodeAnimation_mk3vo")
 blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_mk3vo")
-blend_point_2/pos = Vector2(0, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_ju3tf")
-blend_point_3/pos = Vector2(0, -0.9)
-blend_point_4/node = SubResource("AnimationNodeAnimation_ntee4")
-blend_point_4/pos = Vector2(1, 0)
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0sshd"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ba5a"]
-advance_mode = 2
+blend_point_2/node = SubResource("AnimationNodeAnimation_ju3tf")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ntee4")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2j6g7"]
-states/Attack/node = SubResource("AnimationNodeBlendSpace2D_r5hgr")
-states/Attack/position = Vector2(522, 105)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_sri3m")
-states/Walk/position = Vector2(341, 105)
-transitions = ["Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_0sshd"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_7ba5a")]
+states/Walk/position = Vector2(342, 105)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ntee4"]
+radius = 202.0
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 4
@@ -512,9 +476,17 @@ autoplay = "run_down"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_2j6g7")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Attack/blend_position = Vector2(0, 0)
-parameters/Walk/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(0.221034, 0.0941703)
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="detection" type="Area2D" parent="."]
+script = ExtResource("6_mk3vo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+shape = SubResource("CircleShape2D_ntee4")
+
+[connection signal="body_entered" from="detection" to="detection" method="_on_body_entered"]
+[connection signal="body_exited" from="detection" to="detection" method="_on_body_exited"]
 
 [editable path="Hurtbox"]
