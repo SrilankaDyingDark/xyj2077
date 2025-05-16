@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://eskpwtohhfn8"
+path="res://.godot/imported/Sea.mp3-da7a9cb328419bc7a31465b5809b708d.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Sea.mp3"
+dest_files=["res://.godot/imported/Sea.mp3-da7a9cb328419bc7a31465b5809b708d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
