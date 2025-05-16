@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://mxwctel8pftn" path="res://camera_2d.gd" id="1_u0e42"]
 
 [node name="Camera2D" type="Camera2D"]
-position = Vector2(160, 90)
 limit_left = -200
 limit_top = -200
 limit_right = 500

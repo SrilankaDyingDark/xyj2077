@@ -875,7 +875,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 255
+collision_mask = 253
 script = ExtResource("1_4ntmi")
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
@@ -890,7 +891,6 @@ hframes = 60
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_tlwt5")
 

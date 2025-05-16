@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
 
 @export  var ACCELERATION = 500
