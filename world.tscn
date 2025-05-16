@@ -2112,6 +2112,9 @@ position = Vector2(200, 120)
 [node name="Grass" type="Node2D" parent="Ysort"]
 y_sort_enabled = true
 
+[node name="Grass49" parent="Ysort/Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(157, -63)
+
 [node name="Grass2" parent="Ysort/Grass" instance=ExtResource("6_dwbse")]
 position = Vector2(40, 128)
 
