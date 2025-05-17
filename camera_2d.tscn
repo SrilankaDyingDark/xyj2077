@@ -13,6 +13,7 @@ script = ExtResource("1_u0e42")
 [node name="Limits" type="Node" parent="."]
 
 [node name="TopLeft" type="Marker2D" parent="Limits"]
+position = Vector2(-177, -104)
 
 [node name="BottomRight" type="Marker2D" parent="Limits"]
-position = Vector2(320, 180)
+position = Vector2(177, 104)

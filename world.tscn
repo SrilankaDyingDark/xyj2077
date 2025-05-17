@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://byltx7filpmq8"]
+[gd_scene load_steps=19 format=4 uid="uid://byltx7filpmq8"]
 
 [ext_resource type="Texture2D" uid="uid://b1hw7yj82qjjo" path="res://World/GrassBackground.png" id="1_kva58"]
 [ext_resource type="Texture2D" uid="uid://dpodphagtyj1f" path="res://World/DirtTileset.png" id="2_f5c0m"]
@@ -10,7 +10,205 @@
 [ext_resource type="PackedScene" uid="uid://nvqio2vynng4" path="res://Enemies/bat.tscn" id="8_sjtuv"]
 [ext_resource type="PackedScene" uid="uid://e5xlpa0k68ai" path="res://World/tree.tscn" id="9_cvq6i"]
 [ext_resource type="PackedScene" uid="uid://dctmifehwr53a" path="res://UI/health_ui.tscn" id="10_6tx0c"]
-[ext_resource type="PackedScene" uid="uid://bbo872n0ft805" path="res://Scenes_Manager/portal.tscn" id="11_0to5b"]
+[ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/Portal.tscn" id="11_kva58"]
+[ext_resource type="Texture2D" uid="uid://ckpgwi1pbjjbd" path="res://Scenes_Manager/assets_portal_door/portal01.png" id="12_f5c0m"]
+[ext_resource type="Texture2D" uid="uid://dpn2ukx05rvxm" path="res://assets/blocks/square_floor_assets_eastern_mythology_and_cyberpunk_dark_blue_electronic_sand__b5267a43.png" id="13_b2ar6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee7l0"]
+texture = ExtResource("13_b2ar6")
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+19:15/0 = 0
+20:15/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+20:16/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+5:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+5:19/0 = 0
+8:19/0 = 0
+9:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+19:19/0 = 0
+20:19/0 = 0
+21:19/0 = 0
+22:19/0 = 0
+23:19/0 = 0
+26:19/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+20:20/0 = 0
+21:20/0 = 0
+22:20/0 = 0
+23:20/0 = 0
+24:20/0 = 0
+25:20/0 = 0
+26:20/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+16:21/0 = 0
+17:21/0 = 0
+18:21/0 = 0
+19:21/0 = 0
+20:21/0 = 0
+21:21/0 = 0
+22:21/0 = 0
+23:21/0 = 0
+24:21/0 = 0
+25:21/0 = 0
+26:21/0 = 0
+27:21/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+6:22/0 = 0
+7:22/0 = 0
+8:22/0 = 0
+9:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+13:22/0 = 0
+14:22/0 = 0
+15:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+18:22/0 = 0
+19:22/0 = 0
+20:22/0 = 0
+21:22/0 = 0
+22:22/0 = 0
+23:22/0 = 0
+24:22/0 = 0
+25:22/0 = 0
+26:22/0 = 0
+27:22/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+9:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+13:23/0 = 0
+14:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+18:23/0 = 0
+19:23/0 = 0
+20:23/0 = 0
+21:23/0 = 0
+22:23/0 = 0
+23:23/0 = 0
+24:23/0 = 0
+25:23/0 = 0
+26:23/0 = 0
+7:24/0 = 0
+8:24/0 = 0
+9:24/0 = 0
+10:24/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+14:24/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+18:24/0 = 0
+19:24/0 = 0
+20:24/0 = 0
+21:24/0 = 0
+22:24/0 = 0
+23:24/0 = 0
+24:24/0 = 0
+9:25/0 = 0
+10:25/0 = 0
+11:25/0 = 0
+12:25/0 = 0
+13:25/0 = 0
+14:25/0 = 0
+15:25/0 = 0
+16:25/0 = 0
+17:25/0 = 0
+18:25/0 = 0
+19:25/0 = 0
+20:25/0 = 0
+21:25/0 = 0
+12:26/0 = 0
+13:26/0 = 0
+14:26/0 = 0
+15:26/0 = 0
+16:26/0 = 0
+17:26/0 = 0
+18:26/0 = 0
+19:26/0 = 0
+15:27/0 = 0
+16:27/0 = 0
+8:13/0 = 0
+8:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[sub_resource type="TileSet" id="TileSet_gn8l5"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_ee7l0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("2_f5c0m")
@@ -1866,8 +2064,14 @@ sources/1 = SubResource("TileSetAtlasSource_gbfbk")
 [node name="World" type="Node2D"]
 metadata/_edit_lock_ = true
 
+[node name="air_wall" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADs//b/AAAIAA0AAADs//f/AAAIAA0AAADs//j/AAAIAA0AAADs//n/AAAIAA0AAADs//r/AAAIAA0AAADs//v/AAAIAA0AAADs//z/AAAIAA0AAADs//3/AAAIAA0AAADs//7/AAAIAA0AAADs////AAAIAA0AAADs/wAAAAAIAA0AAADr/wEAAAAIAA0AAADr/wIAAAAIAA0AAADr/wMAAAAIAA0AAADr/wQAAAAIAA0AAADr/wUAAAAIAA0AAADr/wYAAAAIAA0AAADr/wcAAAAIAA0AAADr/wgAAAAIAA0AAADs/woAAAAIAA0AAADt/woAAAAIAA0AAADs/wkAAAAIAA0AAAA=")
+enabled = false
+tile_set = SubResource("TileSet_gn8l5")
+
 [node name="Backround" type="Sprite2D" parent="."]
 texture_repeat = 2
+position = Vector2(3, 2)
 texture = ExtResource("1_kva58")
 region_enabled = true
 region_rect = Rect2(0, 0, 928, 640)
@@ -1891,19 +2095,39 @@ position = Vector2(-139, -67)
 
 [node name="Player" parent="Ysort" instance=ExtResource("5_gn8l5")]
 position = Vector2(139, 67)
-collision_layer = 2
-collision_mask = 5
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Ysort/Player"]
 remote_path = NodePath("..")
 
 [node name="Camera2D" parent="Ysort/Player" instance=ExtResource("4_ee7l0")]
+position_smoothing_enabled = false
+position_smoothing_speed = 100.0
 
 [node name="TopLeft" parent="Ysort/Player/Camera2D/Limits" index="0"]
-position = Vector2(-187, -99)
+position = Vector2(-461, -317)
 
 [node name="BottomRight" parent="Ysort/Player/Camera2D/Limits" index="1"]
-position = Vector2(213, 133)
+position = Vector2(467, 322)
+
+[node name="HealthUI" parent="Ysort/Player" instance=ExtResource("10_6tx0c")]
+offset_left = -136.0
+offset_top = -64.0
+offset_right = -72.0
+offset_bottom = -48.0
+
+[node name="HeartUIEmpty" parent="Ysort/Player/HealthUI" index="0"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -24.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -15.0
+
+[node name="HeartUIFull" parent="Ysort/Player/HealthUI" index="1"]
+offset_left = -24.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -15.0
 
 [node name="Bushes" type="Node2D" parent="Ysort"]
 y_sort_enabled = true
@@ -1970,15 +2194,14 @@ position = Vector2(120, 160)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthUI" parent="CanvasLayer" instance=ExtResource("10_6tx0c")]
-offset_left = -136.0
-offset_top = -64.0
-offset_right = -72.0
-offset_bottom = -48.0
-
-[node name="portal" parent="." instance=ExtResource("11_0to5b")]
-position = Vector2(166, 13)
+[node name="Portal_01" parent="." instance=ExtResource("11_kva58")]
+position = Vector2(169, 2)
 next_scene = "res://Scenes_level/level_1.tscn"
 
+[node name="Portal01" type="Sprite2D" parent="Portal_01"]
+position = Vector2(1.78814e-07, -5.96046e-08)
+scale = Vector2(0.0749512, 0.0749512)
+texture = ExtResource("12_f5c0m")
+
 [editable path="Ysort/Player/Camera2D"]
-[editable path="CanvasLayer/HealthUI"]
+[editable path="Ysort/Player/HealthUI"]
