@@ -1777,6 +1777,7 @@ position = Vector2(8, 86)
 position = Vector2(201, 139)
 
 [node name="Camera2D" parent="Player" instance=ExtResource("6_ir2gb")]
+zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = false
 
 [node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
