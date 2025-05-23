@@ -875,8 +875,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 255
-collision_mask = 253
+collision_layer = 2
+collision_mask = 197
 script = ExtResource("1_4ntmi")
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
