@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4uqvgmaaj8jr"
+path="res://.godot/imported/TypeWriter.mp3-6ba4690bf4f841baaa2d968e1e99fbbb.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/TypeWriter.mp3"
+dest_files=["res://.godot/imported/TypeWriter.mp3-6ba4690bf4f841baaa2d968e1e99fbbb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
