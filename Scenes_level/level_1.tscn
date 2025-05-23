@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://hsc1h47x5b44"]
+[gd_scene load_steps=9 format=4 uid="uid://hsc1h47x5b44"]
 
 [ext_resource type="Texture2D" uid="uid://b55uo3p1mplts" path="res://assets/environment/use_tile_set_for_floor_and_wall_style_eastern_mythology_and_cyberpunk_color_cloud_and_electronic_blu__931f237e.png" id="2_h027p"]
 [ext_resource type="PackedScene" uid="uid://b5y6in3sbavhh" path="res://Player/player.tscn" id="3_v7cbi"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cf6i6j1m43iak" path="res://camera_2d.tscn" id="4_k0xqd"]
 [ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/Portal.tscn" id="5_2yva4"]
 [ext_resource type="Texture2D" uid="uid://ckpgwi1pbjjbd" path="res://Scenes_Manager/assets_portal_door/portal01.png" id="6_q1rmc"]
-[ext_resource type="PackedScene" uid="uid://b7ro015m26nx6" path="res://Boss/boss.tscn" id="7_q1rmc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yva4"]
 texture = ExtResource("2_h027p")
@@ -574,10 +573,10 @@ tile_set = SubResource("TileSet_q1rmc")
 position_smoothing_enabled = false
 
 [node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
-position = Vector2(-481, -346)
+position = Vector2(-636, -442)
 
 [node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
-position = Vector2(530, 311)
+position = Vector2(586, 375)
 
 [node name="HealthUI" parent="Player" instance=ExtResource("4_2yva4")]
 offset_left = -136.0
@@ -611,10 +610,6 @@ texture = ExtResource("6_q1rmc")
 position = Vector2(0, -79)
 scale = Vector2(2, 2)
 next_scene = "res://Scenes_level/level_2.tscn"
-
-[node name="Boss" parent="." instance=ExtResource("7_q1rmc")]
-collision_layer = 1024
-collision_mask = 2
 
 [editable path="Player/Camera2D"]
 [editable path="Player/HealthUI"]
