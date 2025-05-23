@@ -573,10 +573,10 @@ tile_set = SubResource("TileSet_q1rmc")
 position_smoothing_enabled = false
 
 [node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
-position = Vector2(-481, -346)
+position = Vector2(-636, -442)
 
 [node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
-position = Vector2(530, 311)
+position = Vector2(586, 375)
 
 [node name="HealthUI" parent="Player" instance=ExtResource("4_2yva4")]
 offset_left = -136.0
