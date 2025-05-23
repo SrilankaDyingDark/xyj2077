@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds0lvtja4gn33"]
+
+[ext_resource type="Theme" uid="uid://bfsl6ehejxbjf" path="res://Scenes/Menus/default_theme.tres" id="1_0gua7"]
+[ext_resource type="Script" uid="uid://bm7xeckl51un7" path="res://Scenes/game_over_screen.gd" id="1_jb6in"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jb6in")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.580392)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0gua7")
+theme_override_colors/font_color = Color(0.47451, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.937255, 0.533333, 0.788235, 1)
+text = "You're dead!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -380,7 +380,7 @@ scale = Vector2(2.58461, 2.73973)
 sprite_frames = SubResource("SpriteFrames_penys")
 animation = &"Sea"
 autoplay = "Sea"
-frame_progress = 0.782007
+frame_progress = 0.900401
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -14,5 +14,6 @@
 - [x] Live background
 - [x] Typewriter animation for text
 - [x] Scene change with fade-in and fade-out
+- [ ] Game over menu
 - [ ] Pause menu
 - [ ] Music and Sounds
