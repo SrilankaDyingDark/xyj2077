@@ -1772,12 +1772,13 @@ tile_set = SubResource("TileSet_qhfq6")
 
 [node name="Portal30" parent="." instance=ExtResource("4_fk6ay")]
 position = Vector2(8, 86)
+next_scene = "res://World.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_fk6ay")]
 position = Vector2(201, 139)
 
 [node name="Camera2D" parent="Player" instance=ExtResource("6_ir2gb")]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.65, 0.65)
 position_smoothing_enabled = false
 
 [node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
@@ -1795,16 +1796,16 @@ offset_bottom = -48.0
 [node name="HeartUIEmpty" parent="Player/HealthUI" index="0"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = -24.0
-offset_top = -26.0
-offset_right = 35.0
-offset_bottom = -15.0
+offset_left = -103.0
+offset_top = -68.0
+offset_right = -44.0
+offset_bottom = -57.0
 
 [node name="HeartUIFull" parent="Player/HealthUI" index="1"]
-offset_left = -24.0
-offset_top = -26.0
-offset_right = 35.0
-offset_bottom = -15.0
+offset_left = -102.0
+offset_top = -68.0
+offset_right = -43.0
+offset_bottom = -57.0
 
 [editable path="Player/Camera2D"]
 [editable path="Player/HealthUI"]
