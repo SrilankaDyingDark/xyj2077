@@ -1,10 +1,11 @@
-[gd_scene load_steps=61 format=3 uid="uid://juvqpyx35nk7"]
+[gd_scene load_steps=62 format=3 uid="uid://juvqpyx35nk7"]
 
 [ext_resource type="FontFile" uid="uid://d1bpmp2584ern" path="res://Scenes/Fonts/AaWeiWeiDianZhenTi-2.ttf" id="1_acd1i"]
 [ext_resource type="Script" uid="uid://dmve38i3sap3p" path="res://Scenes/type_writer.gd" id="1_k4aau"]
 [ext_resource type="Texture2D" uid="uid://dwh5fmo3mbjf1" path="res://Scenes/GlassSea/Batch/sprite.png" id="3_lmf1u"]
 [ext_resource type="PackedScene" uid="uid://c7suwadvx3qmk" path="res://Scenes/Menus/main_menu.tscn" id="4_lmf1u"]
 [ext_resource type="AudioStream" uid="uid://b4uqvgmaaj8jr" path="res://Music and Sounds/TypeWriter.mp3" id="4_srqao"]
+[ext_resource type="AudioStream" uid="uid://eskpwtohhfn8" path="res://Music and Sounds/Sea.mp3" id="6_8xbp5"]
 
 [sub_resource type="Theme" id="Theme_8fd2j"]
 default_font = ExtResource("1_acd1i")
@@ -470,6 +471,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0666667, 0.0862745, 0.121569, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8xbp5")
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]

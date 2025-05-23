@@ -1,8 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://c7suwadvx3qmk"]
+[gd_scene load_steps=57 format=3 uid="uid://c7suwadvx3qmk"]
 
 [ext_resource type="Theme" uid="uid://bfsl6ehejxbjf" path="res://Scenes/Menus/default_theme.tres" id="1_penys"]
 [ext_resource type="Script" uid="uid://ccl2rh1mb4h6r" path="res://Scenes/Menus/main_menu.gd" id="2_aur2u"]
 [ext_resource type="Texture2D" uid="uid://dwh5fmo3mbjf1" path="res://Scenes/GlassSea/Batch/sprite.png" id="3_aur2u"]
+[ext_resource type="AudioStream" uid="uid://d171vabi353yx" path="res://Music and Sounds/Menu Move.wav" id="4_5wi6m"]
+[ext_resource type="AudioStream" uid="uid://u5qtpuwuuksx" path="res://Music and Sounds/Menu Select.wav" id="5_chkef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aur2u"]
 atlas = ExtResource("3_aur2u")
@@ -68,6 +70,78 @@ region = Rect2(780, 73, 130, 73)
 atlas = ExtResource("3_aur2u")
 region = Rect2(910, 73, 130, 73)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rh2w"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(0, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou7d0"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(130, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47bqg"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(260, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cflx4"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(390, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg3ot"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(520, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h56lv"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(650, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e57l0"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(780, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwyy1"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(910, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef2r8"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(0, 219, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ih0d"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(0, 219, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m71hm"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(910, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ldpj"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(780, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ttci"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(650, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v6gi"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(520, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rctu"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(390, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34blk"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(260, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bucoq"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(130, 146, 130, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17l57"]
+atlas = ExtResource("3_aur2u")
+region = Rect2(0, 146, 130, 73)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo00v"]
 atlas = ExtResource("3_aur2u")
 region = Rect2(910, 73, 130, 73)
@@ -132,7 +206,7 @@ region = Rect2(130, 0, 130, 73)
 atlas = ExtResource("3_aur2u")
 region = Rect2(0, 0, 130, 73)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_j4kqa"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_penys"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -184,6 +258,60 @@ animations = [{
 "texture": SubResource("AtlasTexture_fx838")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0rh2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou7d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47bqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cflx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg3ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h56lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e57l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwyy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef2r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ih0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m71hm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ldpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ttci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v6gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rctu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34blk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bucoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17l57")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fo00v")
 }, {
 "duration": 1.0,
@@ -233,7 +361,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Sea",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="MainMenu" type="Control"]
@@ -246,13 +374,13 @@ grow_vertical = 2
 theme = ExtResource("1_penys")
 script = ExtResource("2_aur2u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(164, 96)
-scale = Vector2(2.52308, 2.84931)
-sprite_frames = SubResource("SpriteFrames_j4kqa")
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, 92)
+scale = Vector2(2.58461, 2.73973)
+sprite_frames = SubResource("SpriteFrames_penys")
 animation = &"Sea"
 autoplay = "Sea"
-frame_progress = 0.512533
+frame_progress = 0.944191
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -310,6 +438,12 @@ focus_previous = NodePath("../StartGameButton")
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 14
 text = "Exit"
+
+[node name="MenuMoveSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5wi6m")
+
+[node name="MenuSelectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_chkef")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBox/StartGameButton" to="." method="_on_start_game_button_pressed"]
