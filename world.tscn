@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://byltx7filpmq8"]
+[gd_scene load_steps=20 format=4 uid="uid://byltx7filpmq8"]
 
 [ext_resource type="Texture2D" uid="uid://b1hw7yj82qjjo" path="res://World/GrassBackground.png" id="1_kva58"]
 [ext_resource type="Texture2D" uid="uid://dpodphagtyj1f" path="res://World/DirtTileset.png" id="2_f5c0m"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://nvqio2vynng4" path="res://Enemies/bat.tscn" id="8_sjtuv"]
 [ext_resource type="PackedScene" uid="uid://e5xlpa0k68ai" path="res://World/tree.tscn" id="9_cvq6i"]
 [ext_resource type="PackedScene" uid="uid://dctmifehwr53a" path="res://UI/health_ui.tscn" id="10_6tx0c"]
-[ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/Portal.tscn" id="11_kva58"]
+[ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/portal.tscn" id="11_kva58"]
 [ext_resource type="Texture2D" uid="uid://ckpgwi1pbjjbd" path="res://Scenes_Manager/assets_portal_door/portal01.png" id="12_f5c0m"]
 [ext_resource type="Texture2D" uid="uid://dpn2ukx05rvxm" path="res://assets/blocks/square_floor_assets_eastern_mythology_and_cyberpunk_dark_blue_electronic_sand__b5267a43.png" id="13_b2ar6"]
+[ext_resource type="AudioStream" uid="uid://cjh04g60u6rm6" path="res://Music and Sounds/Music.mp3" id="14_70uel"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee7l0"]
 texture = ExtResource("13_b2ar6")
@@ -2202,6 +2203,9 @@ next_scene = "res://Scenes_level/level_1.tscn"
 position = Vector2(1.78814e-07, -5.96046e-08)
 scale = Vector2(0.0749512, 0.0749512)
 texture = ExtResource("12_f5c0m")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_70uel")
 
 [editable path="Ysort/Player/Camera2D"]
 [editable path="Ysort/Player/HealthUI"]
