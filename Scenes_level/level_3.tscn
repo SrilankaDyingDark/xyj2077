@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://bj1hhtiy13mk5"]
+[gd_scene load_steps=14 format=4 uid="uid://bj1hhtiy13mk5"]
 
 [ext_resource type="Texture2D" uid="uid://cbf1se5inxfgy" path="res://assets/environment/pixel_art_environment_of_the_white_elephant_s_sacred_domain_in_lion_camel_ridge_a_towering_white_pag__60ab32a2.png" id="1_6tkga"]
 [ext_resource type="Texture2D" uid="uid://buvn23m6r6nls" path="res://assets/environment/pixel_art_environment_of_the_white_elephant_s_sacred_domain_in_lion_camel_ridge_a_towering_white_pag__88a5c920.png" id="2_s3meh"]
 [ext_resource type="Texture2D" uid="uid://hnnu8y1a1c8u" path="res://assets/environment/pixel_art_environment_of_the_white_elephant_s_sacred_domain_in_lion_camel_ridge_a_towering_white_pag__b5c305d2.png" id="3_3su6j"]
 [ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/Portal.tscn" id="4_fk6ay"]
+[ext_resource type="PackedScene" uid="uid://b5y6in3sbavhh" path="res://Player/player.tscn" id="5_fk6ay"]
+[ext_resource type="PackedScene" uid="uid://cf6i6j1m43iak" path="res://camera_2d.tscn" id="6_ir2gb"]
+[ext_resource type="PackedScene" uid="uid://dctmifehwr53a" path="res://UI/health_ui.tscn" id="7_dtk5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ir2gb"]
 texture = ExtResource("1_6tkga")
@@ -1769,3 +1772,38 @@ tile_set = SubResource("TileSet_qhfq6")
 
 [node name="Portal30" parent="." instance=ExtResource("4_fk6ay")]
 position = Vector2(8, 86)
+
+[node name="Player" parent="." instance=ExtResource("5_fk6ay")]
+position = Vector2(201, 139)
+
+[node name="Camera2D" parent="Player" instance=ExtResource("6_ir2gb")]
+position_smoothing_enabled = false
+
+[node name="TopLeft" parent="Player/Camera2D/Limits" index="0"]
+position = Vector2(-481, -346)
+
+[node name="BottomRight" parent="Player/Camera2D/Limits" index="1"]
+position = Vector2(530, 311)
+
+[node name="HealthUI" parent="Player" instance=ExtResource("7_dtk5c")]
+offset_left = -136.0
+offset_top = -64.0
+offset_right = -72.0
+offset_bottom = -48.0
+
+[node name="HeartUIEmpty" parent="Player/HealthUI" index="0"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -24.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -15.0
+
+[node name="HeartUIFull" parent="Player/HealthUI" index="1"]
+offset_left = -24.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -15.0
+
+[editable path="Player/Camera2D"]
+[editable path="Player/HealthUI"]
