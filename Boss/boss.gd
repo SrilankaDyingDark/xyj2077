@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree  # 同级目录的AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")  # 动画状态机
 @onready var playerDetectionZone = $detection
-@export  var ACCELERATION = 300
+@export  var ACCELERATION = 30
 @export  var MAX_SPEED = 30
 @export  var FRICTION = 200
 enum {
