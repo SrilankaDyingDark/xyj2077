@@ -119,6 +119,8 @@ roll={
 2d_physics/layer_7="portal"
 2d_physics/layer_8="level_1"
 2d_physics/layer_9="level2"
+2d_physics/layer_10="level3"
+2d_physics/layer_11="boss1"
 
 [rendering]
 
