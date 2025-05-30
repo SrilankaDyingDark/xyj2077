@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://hdqv5rwyueit" path="res://Overlap/hurtbox.tscn" id="2_6xxrv"]
 [ext_resource type="Texture2D" uid="uid://bb14pvpc6r7d" path="res://Boss/Defense.png" id="3_7ba5a"]
 [ext_resource type="Texture2D" uid="uid://yv1fnc11i0a" path="res://Boss/Walk.png" id="5_0sshd"]
-[ext_resource type="Script" path="res://Boss/detection.gd" id="6_mk3vo"]
+[ext_resource type="Script" uid="uid://dpd137lnq40qv" path="res://Boss/detection.gd" id="6_mk3vo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3701"]
 radius = 3.99824
