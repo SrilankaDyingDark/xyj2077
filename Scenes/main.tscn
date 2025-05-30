@@ -9,15 +9,7 @@ script = ExtResource("1_8gbba")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_jjvhh")]
 
-[node name="ColorRect" type="ColorRect" parent="MainMenu"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 323.0
-offset_bottom = 189.0
-color = Color(0, 0, 0.117647, 0.156863)
-
-[node name="MarginContainer" parent="MainMenu" index="2"]
+[node name="MarginContainer" parent="MainMenu" index="1"]
 offset_right = 320.0
 offset_bottom = 180.0
 
