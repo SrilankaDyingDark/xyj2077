@@ -10,6 +10,7 @@ const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
 @export  var FRICTION = 500
 
 signal no_health
+
 			
 enum {
 	MOVE,

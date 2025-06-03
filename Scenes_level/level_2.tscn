@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://cgl8mpma05uem"]
+[gd_scene load_steps=14 format=4 uid="uid://cgl8mpma05uem"]
 
 [ext_resource type="Texture2D" uid="uid://dmaqfhufa8kji" path="res://assets/environment/square_large_floor_assets_a_complete_landscape_eastern_mythology_and_cyberpunk_dark_blue_electronic___1e1d9dd4.png" id="1_eqsmk"]
 [ext_resource type="Texture2D" uid="uid://dahop114k8a81" path="res://assets/environment/dark_blue_with_sand_big_tower_holy_and_weird_decorated_with_bones__135d5021.png" id="2_gh2bl"]
-[ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/Portal.tscn" id="3_m5mhw"]
+[ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/portal.tscn" id="3_m5mhw"]
 [ext_resource type="Texture2D" uid="uid://b0y41ghxucc2f" path="res://Scenes_Manager/assets_portal_door/portal12.png" id="4_kekdp"]
 [ext_resource type="PackedScene" uid="uid://b5y6in3sbavhh" path="res://Player/player.tscn" id="5_s3seh"]
+[ext_resource type="PackedScene" uid="uid://ddibrv171e3fh" path="res://Scenes/Boss2/Boss2.tscn" id="6_kekdp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kekdp"]
 texture = ExtResource("1_eqsmk")
@@ -572,13 +573,19 @@ next_scene = "res://World.tscn"
 scale = Vector2(0.136963, 0.136963)
 texture = ExtResource("4_kekdp")
 
-[node name="Player" parent="." instance=ExtResource("5_s3seh")]
-position = Vector2(-335, -24)
-collision_mask = 453
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.7, 0.7)
-
 [node name="Portal23" parent="." instance=ExtResource("3_m5mhw")]
 position = Vector2(158, -97)
 next_scene = "res://Scenes_level/level_3.tscn"
+
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Node2D" instance=ExtResource("5_s3seh")]
+position = Vector2(-335, -24)
+collision_mask = 453
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/Player"]
+zoom = Vector2(0.7, 0.7)
+
+[node name="Boss2" parent="Node2D" instance=ExtResource("6_kekdp")]
+position = Vector2(-100, -49)
