@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxkgedlcsyiy1"]
+
+[ext_resource type="Script" uid="uid://dxn2ja0oavi37" path="res://Scenes_level/level_2/player_fly/fox_fly.gd" id="1_mkgbm"]
+[ext_resource type="Texture2D" uid="uid://6vd7l181a78b" path="res://assets/fox_fly.png" id="2_uylpp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sspyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uylpp")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3guqb"]
+radius = 6.55624
+height = 15.0818
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvs72"]
+radius = 16.0312
+
+[node name="fox_fly" type="CharacterBody2D"]
+scale = Vector2(0.305053, 0.305768)
+collision_layer = 2
+collision_mask = 2384
+script = ExtResource("1_mkgbm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.035, 0.035)
+sprite_frames = SubResource("SpriteFrames_sspyn")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3guqb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.90735e-06, 0)
+shape = SubResource("CircleShape2D_cvs72")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Timer_shoot" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="Timer_shoot" to="." method="_on_timer_shoot_timeout"]
