@@ -2198,7 +2198,7 @@ position = Vector2(120, 160)
 
 [node name="Portal_01" parent="." instance=ExtResource("11_kva58")]
 position = Vector2(169, 2)
-next_scene = "res://Scenes_level/level_1.tscn"
+next_scene = "res://Scenes_level/level_1/level_1.tscn"
 
 [node name="Portal01" type="Sprite2D" parent="Portal_01"]
 position = Vector2(1.78814e-07, -5.96046e-08)
