@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
+
 @export var speed = 50.0  # 移动速度
 @onready var animation_tree = $AnimationTree  # 同级目录的AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")  # 动画状态机
@@ -18,6 +20,9 @@ func _ready():
 	update_animation(Vector2.LEFT)  # 默认向左
 
 var state = IDLE
+
+@onready var stats: Node = $Stats
+@onready var hurtbox: Area2D = $Hurtbox
 
 func seek_player():
 	if playerDetectionZone.can_see_player():
@@ -70,3 +75,15 @@ func update_animation(direction):
 	else:
 		# 无输入时保持最后方向的行走动画（替代Idle）
 		animation_state.travel("Walk")
+
+func _on_hurtbox_area_entered(area):
+	stats.health -= area.damage
+	velocity = area.knockback_vector * 150
+	hurtbox.create_hit_effect()
+	hurtbox.start_invincibility(0.4)
+
+func _on_stats_no_health():
+	queue_free() #设置当生命值为0时做什么，可以转入二阶段
+	var enemyDeathEffect = EnemyDeathEffect.instantiate()
+	get_parent().add_child(enemyDeathEffect)
+	enemyDeathEffect.global_position = global_position

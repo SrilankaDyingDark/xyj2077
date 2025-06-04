@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://hsc1h47x5b44"]
+[gd_scene load_steps=50 format=4 uid="uid://hsc1h47x5b44"]
 
 [ext_resource type="Texture2D" uid="uid://b55uo3p1mplts" path="res://assets/environment/use_tile_set_for_floor_and_wall_style_eastern_mythology_and_cyberpunk_color_cloud_and_electronic_blu__931f237e.png" id="2_h027p"]
 [ext_resource type="PackedScene" uid="uid://b5y6in3sbavhh" path="res://Player/player.tscn" id="3_v7cbi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ckpgwi1pbjjbd" path="res://Scenes_Manager/assets_portal_door/portal01.png" id="6_q1rmc"]
 [ext_resource type="Script" uid="uid://buu0pi3vgq3vi" path="res://Scenes_level/level_1/boos_1.gd" id="7_hqejx"]
 [ext_resource type="Texture2D" uid="uid://d1hbgyicdf4a1" path="res://Scenes_level/level_1/boss_1.png" id="8_oand3"]
+[ext_resource type="PackedScene" uid="uid://1grev1g6qj3f" path="res://stats.tscn" id="9_d3c0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yva4"]
 texture = ExtResource("2_h027p")
@@ -1061,10 +1062,15 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boos_1/DetectionPlayer"]
 shape = SubResource("CircleShape2D_hqejx")
+debug_color = Color(0.847834, 0.822284, 1, 0.42)
+
+[node name="Stats" parent="Boos_1" instance=ExtResource("9_d3c0i")]
+max_health = 4
 
 [connection signal="area_entered" from="Boos_1/HurtBox" to="Boos_1" method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="Boos_1/DetectionPlayer" to="Boos_1" method="_on_detection_player_body_entered"]
 [connection signal="body_exited" from="Boos_1/DetectionPlayer" to="Boos_1" method="_on_detection_player_body_exited"]
+[connection signal="no_health" from="Boos_1/Stats" to="Boos_1" method="_on_stats_no_health"]
 
 [editable path="Player/Camera2D"]
 [editable path="Player/HealthUI"]

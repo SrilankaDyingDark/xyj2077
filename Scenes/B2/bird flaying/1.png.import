@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwdg7yyp104ho"
-path="res://.godot/imported/2.png-ba6c5791f22f99d03bca1d8645bfe455.ctex"
+uid="uid://yf18yl7p7h3l"
+path="res://.godot/imported/1.png-73a54b41b470e89bb1486983de47ea15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Boss2/bird flaying/2.png"
-dest_files=["res://.godot/imported/2.png-ba6c5791f22f99d03bca1d8645bfe455.ctex"]
+source_file="res://Scenes/B2/bird flaying/1.png"
+dest_files=["res://.godot/imported/1.png-73a54b41b470e89bb1486983de47ea15.ctex"]
 
 [params]
 

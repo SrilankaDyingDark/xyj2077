@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b7ro015m26nx6"]
+[gd_scene load_steps=31 format=3 uid="uid://b7ro015m26nx6"]
 
 [ext_resource type="Script" uid="uid://drpt1n7ygd7hu" path="res://Scenes_level/level_1/Boss1/boss.gd" id="1_4cnrr"]
 [ext_resource type="Texture2D" uid="uid://dw61vmus6xy86" path="res://Scenes_level/level_1/Boss1/Atack.png" id="2_0sshd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bb14pvpc6r7d" path="res://Scenes_level/level_1/Boss1/Defense.png" id="3_7ba5a"]
 [ext_resource type="Texture2D" uid="uid://yv1fnc11i0a" path="res://Scenes_level/level_1/Boss1/Walk.png" id="5_0sshd"]
 [ext_resource type="Script" uid="uid://dpd137lnq40qv" path="res://Scenes_level/level_1/Boss1/detection.gd" id="6_mk3vo"]
+[ext_resource type="PackedScene" uid="uid://1grev1g6qj3f" path="res://stats.tscn" id="7_nf3aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3701"]
 radius = 3.99824
@@ -486,7 +487,11 @@ script = ExtResource("6_mk3vo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 shape = SubResource("CircleShape2D_ntee4")
 
+[node name="Stats" parent="." instance=ExtResource("7_nf3aa")]
+max_health = 2
+
 [connection signal="body_entered" from="detection" to="detection" method="_on_body_entered"]
 [connection signal="body_exited" from="detection" to="detection" method="_on_body_exited"]
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
 
 [editable path="Hurtbox"]

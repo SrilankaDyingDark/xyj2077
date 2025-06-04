@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xq6tv140ric4"
-path="res://.godot/imported/attack1_vfx.png-a3fdc235754e203d5ef91e3a26c24d91.ctex"
+uid="uid://mi2gmoou0c0s"
+path="res://.godot/imported/4.png-fad5bc20670775b518753aa932fce070.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Boss2/attack1_vfx.png"
-dest_files=["res://.godot/imported/attack1_vfx.png-a3fdc235754e203d5ef91e3a26c24d91.ctex"]
+source_file="res://Scenes/B2/bird flaying/4.png"
+dest_files=["res://.godot/imported/4.png-fad5bc20670775b518753aa932fce070.ctex"]
 
 [params]
 

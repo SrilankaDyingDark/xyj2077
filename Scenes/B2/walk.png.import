@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mi2gmoou0c0s"
-path="res://.godot/imported/4.png-793f5d5bc70731a479a94630355a6dd0.ctex"
+uid="uid://dqns3w70h0rtt"
+path="res://.godot/imported/walk.png-039fb5e662d9d545eca3dc06da4acea0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Boss2/bird flaying/4.png"
-dest_files=["res://.godot/imported/4.png-793f5d5bc70731a479a94630355a6dd0.ctex"]
+source_file="res://Scenes/B2/walk.png"
+dest_files=["res://.godot/imported/walk.png-039fb5e662d9d545eca3dc06da4acea0.ctex"]
 
 [params]
 
