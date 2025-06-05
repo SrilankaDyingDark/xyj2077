@@ -50,10 +50,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 # 被子弹攻击
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
+		# 受击变红
+		$AnimatedSprite2D.modulate = Color(1, 0, 0)
+		$Timer_red.start()
+		
 		if area.bullet_type == 1:
-			HP -= 1
+			HP -= 0.5
+	
 		elif area.bullet_type == 2:
 			HP -= 2
+			
+		elif area.bullet_type == 0:
+			HP -= 1
 
 
 # 收尾动画
@@ -61,3 +69,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "death":
 		get_node("../../../UI").get_score(10)
 		queue_free()
+
+# 0.15秒后回复原色
+func _on_timer_red_timeout() -> void:
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)

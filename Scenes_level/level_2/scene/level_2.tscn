@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://pvjv7o6e0tyx"]
+[gd_scene load_steps=20 format=3 uid="uid://pvjv7o6e0tyx"]
 
 [ext_resource type="Script" uid="uid://d2lrrebpktl8d" path="res://Scenes_level/level_2/scene/level_2.gd" id="1_keesh"]
 [ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/portal.tscn" id="1_mlnv8"]
@@ -12,12 +12,52 @@
 [ext_resource type="PackedScene" uid="uid://dg7p5lpfe3lh8" path="res://Scenes_level/level_2/enemy/troop_1/enemy_troop_1.tscn" id="10_jepbf"]
 [ext_resource type="Script" uid="uid://5hjj1iqw1e1s" path="res://Scenes_level/level_2/enemy/troop_1/troop_create.gd" id="11_e8rqx"]
 [ext_resource type="Script" uid="uid://dsaqhb0str1tw" path="res://Scenes_level/level_2/enemy/troop_2/path_2d.gd" id="12_5mggh"]
+[ext_resource type="PackedScene" uid="uid://c8cvlcepf26bp" path="res://Scenes_level/level_2/enemy/BOSS/boss_2.tscn" id="13_ap5sj"]
+[ext_resource type="Texture2D" uid="uid://ckpgwi1pbjjbd" path="res://Scenes_Manager/assets_portal_door/portal01.png" id="14_dt66c"]
+[ext_resource type="PackedScene" uid="uid://bgl0isws3himu" path="res://Scenes_level/level_2/others/S.tscn" id="15_yv8p6"]
 
 [sub_resource type="Curve2D" id="Curve2D_e8rqx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 41, -29, -24.2265, -10.0066, 24.2265, 10.0066, 68, 22, 0, 0, 0, 0, 151.197, 46.5946, 0.263332, 37.6564, -0.263332, -37.6564, 297, 61, 0, 0, 0, 0, 172.79, 71.8744, -0.526665, 53.7196, 0.526665, -53.7196, 18, 79, 0, 0, 0, 0, 154.357, 97.1542, 0, 41.343, 0, -41.343, 282, 122, 0, 0, 0, 0, 157.517, 138.76, 0.789994, 60.8295, -0.789994, -60.8295, 22, 147, 0, 0, 0, 0, 167.787, 176.943, 0.263331, 40.8163, -0.263331, -40.8163, 276, 205, 0, 0, 0, 0, 10, 240)
+"points": PackedVector2Array(0, 0, 0, 0, 41, -29, -24.2265, -10.0066, 24.2265, 10.0066, 68, 22, 0, 0, 0, 0, 151.197, 46.5946, 0.263332, 37.6564, -0.263332, -37.6564, 317, 48, 0, 0, 0, 0, 172.79, 71.8744, -0.526665, 53.7196, 0.526665, -53.7196, 18, 79, 0, 0, 0, 0, 154.357, 97.1542, 0, 41.343, 0, -41.343, 315, 126, 0, 0, 0, 0, 157.517, 138.76, 0.789994, 60.8295, -0.789994, -60.8295, 22, 147, 0, 0, 0, 0, 167.787, 176.943, 0.263331, 40.8163, -0.263331, -40.8163, 314, 196, 0, 0, 0, 0, 160.518, 201.772, 0, 0, 0, 0, 75, 228, 0, 0, 0, 0, 10, 240)
 }
-point_count = 13
+point_count = 15
+
+[sub_resource type="Animation" id="Animation_yv8p6"]
+resource_name = "BOSS_coming"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BOSS_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01571, 1.7, 2, 2.76618, 3.14977, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(158, -27), Vector2(158, 125), Vector2(158, 92), Vector2(158, 103), Vector2(158, 51), Vector2(158, 68), Vector2(158, 49)]
+}
+
+[sub_resource type="Animation" id="Animation_dt66c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BOSS_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(153, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_do7d1"]
+_data = {
+&"BOSS_coming": SubResource("Animation_yv8p6"),
+&"RESET": SubResource("Animation_dt66c")
+}
 
 [node name="level_2" type="Node2D"]
 script = ExtResource("1_keesh")
@@ -34,8 +74,14 @@ position = Vector2(0, 2.19699)
 scale = Vector2(0.106002, 0.106002)
 texture = ExtResource("2_hj3ss")
 
-[node name="Portal23" parent="Portal" instance=ExtResource("1_mlnv8")]
-position = Vector2(158, -14)
+[node name="Portal01" type="Sprite2D" parent="Portal"]
+position = Vector2(73, -17)
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("14_dt66c")
+
+[node name="Portal23" parent="Portal/Portal01" instance=ExtResource("1_mlnv8")]
+scale = Vector2(12.8308, 12.8308)
+collision_layer = 2112
 next_scene = "res://Scenes_level/level_3/level_3.tscn"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -55,15 +101,15 @@ scale = Vector2(0.825, 0.8975)
 texture = ExtResource("5_5m2m8")
 
 [node name="fox_fly" parent="." instance=ExtResource("6_hj3ss")]
-position = Vector2(161, 172)
+position = Vector2(158, 172)
 
 [node name="UI" parent="." instance=ExtResource("8_y5m5x")]
 
 [node name="heal" parent="." instance=ExtResource("9_5m2m8")]
-position = Vector2(186, 154)
+position = Vector2(-10, 172)
 
 [node name="troop" parent="." instance=ExtResource("10_jepbf")]
-position = Vector2(155, 24)
+position = Vector2(45, -27)
 
 [node name="troop_create" type="Node2D" parent="." groups=["enemy"]]
 script = ExtResource("11_e8rqx")
@@ -72,11 +118,23 @@ script = ExtResource("11_e8rqx")
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="troop_create"]
-position = Vector2(6, -5)
+position = Vector2(1, -21)
 curve = SubResource("Curve2D_e8rqx")
 script = ExtResource("12_5mggh")
 
 [node name="Timer" type="Timer" parent="troop_create/Path2D"]
+
+[node name="BOSS_2" parent="." groups=["enemy"] instance=ExtResource("13_ap5sj")]
+position = Vector2(153, -20)
+scale = Vector2(1.59, 1.59)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_do7d1")
+}
+
+[node name="S" parent="AnimationPlayer" instance=ExtResource("15_yv8p6")]
+position = Vector2(180, 106)
 
 [connection signal="timeout" from="troop_create/Timer_01" to="troop_create" method="_on_timer_01_timeout"]
 [connection signal="timeout" from="troop_create/Path2D/Timer" to="troop_create/Path2D" method="_on_timer_timeout"]

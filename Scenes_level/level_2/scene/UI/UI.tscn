@@ -43,6 +43,16 @@ value = 3.0
 texture_under = ExtResource("1_cb18t")
 texture_progress = ExtResource("2_omocc")
 
+[node name="TextureProgressBar_boss2" type="TextureProgressBar" parent="."]
+offset_left = 195.0
+offset_top = 6.0
+offset_right = 214.0
+offset_bottom = 46.0
+scale = Vector2(5.88, 2.16)
+value = 100.0
+texture_under = ExtResource("1_cb18t")
+texture_progress = ExtResource("2_omocc")
+
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxkgedlcsyiy1"]
+[gd_scene load_steps=11 format=3 uid="uid://dxkgedlcsyiy1"]
 
 [ext_resource type="Script" uid="uid://dxn2ja0oavi37" path="res://Scenes_level/level_2/player_fly/fox_fly.gd" id="1_mkgbm"]
+[ext_resource type="Shader" uid="uid://byhrf353sxk64" path="res://Scenes_level/level_2/player_fly/fox_fly.gdshader" id="2_k2jwd"]
 [ext_resource type="Texture2D" uid="uid://6vd7l181a78b" path="res://Scenes_level/level_2/player_fly/assets/fox_fly.png" id="2_uylpp"]
 [ext_resource type="Texture2D" uid="uid://bv1u8ew2f7p8q" path="res://Scenes_level/level_2/player_fly/assets/d0.tres" id="3_4kmc7"]
 [ext_resource type="Texture2D" uid="uid://cwgg5u176ne3o" path="res://Scenes_level/level_2/player_fly/assets/d1.tres" id="4_k2jwd"]
 [ext_resource type="Texture2D" uid="uid://bp1kb3nlrcs3w" path="res://Scenes_level/level_2/player_fly/assets/d2.tres" id="5_0cb3y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cb3y"]
+shader = ExtResource("2_k2jwd")
+shader_parameter/flash_state = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sspyn"]
 animations = [{
@@ -55,6 +60,7 @@ collision_mask = 2048
 script = ExtResource("1_mkgbm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_0cb3y")
 scale = Vector2(0.035, 0.035)
 sprite_frames = SubResource("SpriteFrames_sspyn")
 animation = &"Idle"

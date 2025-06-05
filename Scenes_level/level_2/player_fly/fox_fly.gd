@@ -16,6 +16,7 @@ var bullet = preload("res://Scenes_level/level_2/player_fly/bullet_1.tscn")
 var Mbullet = preload("res://Scenes_level/level_2/player_fly/bullet_2.tscn")
 var shoot_begin = true
 
+var white = 0		# 受到攻击变白
 
 func _physics_process(delta):
 	if not death:
@@ -23,6 +24,12 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play('Idle')
 		attack()
 		health_control()
+		
+		var shader_mat := $AnimatedSprite2D.material as ShaderMaterial
+		if shader_mat:
+			shader_mat.set("shader_parameter/flash_state", white)
+			if white >= 0:
+				white -= 5 * delta
 
 func movement(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -71,18 +78,23 @@ func heal(value):
 func wound(value):
 	if HP > 0:
 		HP -= value
-
+		white = 1.0
+		
 func _on_timer_shoot_timeout():
 	shoot_begin = true
 
 func _on_area_2d_area_entered(area: Area2D):
 	if area.is_in_group("enemy"):
 		wound(1)
-		
+		white = 1.0
 	if area.is_in_group('heal'):
 		heal(1)
 		area.queue_free()
-		
+
+	if area.is_in_group("O"):
+		bullet_type = 0
+		area.queue_free()
+
 	if area.is_in_group("S"):
 		bullet_type = 1
 		area.queue_free()
