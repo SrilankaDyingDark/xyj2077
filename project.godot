@@ -34,13 +34,26 @@ project/assembly_name="教程"
 [file_customization]
 
 folder_colors={
-"res://Scenes_level/level_1/": "teal",
-"res://Scenes_level/level_2/": "yellow"
+"res://Scenes_level/level_2/": "yellow",
+"res://Scenes_level/level_2/enemy/": "orange",
+"res://Scenes_level/level_2/enemy/assets/": "gray",
+"res://Scenes_level/level_2/enemy/troop_1/": "gray",
+"res://Scenes_level/level_2/enemy/troop_2/": "gray",
+"res://Scenes_level/level_2/player_fly/": "orange",
+"res://Scenes_level/level_2/player_fly/assets/": "gray",
+"res://Scenes_level/level_2/scene/UI/": "gray",
+"res://Scenes_level/level_2/scene/assets/": "gray"
 }
 
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+bullet=""
+enemy=""
+Player=""
 
 [importer_defaults]
 

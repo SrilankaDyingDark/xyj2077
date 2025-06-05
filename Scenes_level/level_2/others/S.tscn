@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgl0isws3himu"]
+
+[ext_resource type="Script" uid="uid://b8cbfgconabm1" path="res://Scenes_level/level_2/others/heal.gd" id="1_jq5ys"]
+[ext_resource type="Texture2D" uid="uid://c2fqbju0pvi2" path="res://Scenes_level/level_2/enemy/assets/cells/horse/SpriteSheetBlack.png" id="2_jq5ys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6jo2"]
+atlas = ExtResource("2_jq5ys")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgk8h"]
+atlas = ExtResource("2_jq5ys")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snbhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6jo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgk8h")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1uyw"]
+radius = 10.5234
+
+[node name="S" type="Area2D" groups=["S"]]
+scale = Vector2(0.28508, 0.28508)
+script = ExtResource("1_jq5ys")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, 0)
+sprite_frames = SubResource("SpriteFrames_snbhr")
+animation = &"Idle"
+frame_progress = 0.00268023
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -3.11193
+shape = SubResource("CircleShape2D_u1uyw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1.02617, 1.02617)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,27 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://pvjv7o6e0tyx"]
+[gd_scene load_steps=14 format=3 uid="uid://pvjv7o6e0tyx"]
 
 [ext_resource type="Script" uid="uid://d2lrrebpktl8d" path="res://Scenes_level/level_2/scene/level_2.gd" id="1_keesh"]
 [ext_resource type="PackedScene" uid="uid://bj42vc3r0gbvm" path="res://Scenes_Manager/portal.tscn" id="1_mlnv8"]
 [ext_resource type="Texture2D" uid="uid://b0y41ghxucc2f" path="res://Scenes_Manager/assets_portal_door/portal12.png" id="2_hj3ss"]
 [ext_resource type="Script" uid="uid://bmo3boucn3bv0" path="res://Scenes_level/level_2/scene/parallax_background.gd" id="3_keesh"]
-[ext_resource type="Texture2D" uid="uid://dyjaumvps2uhg" path="res://Scenes_level/level_2/scene/left.png" id="4_y5m5x"]
-[ext_resource type="Texture2D" uid="uid://t5lydm50ne5y" path="res://Scenes_level/level_2/scene/right.png" id="5_5m2m8"]
+[ext_resource type="Texture2D" uid="uid://dyjaumvps2uhg" path="res://Scenes_level/level_2/scene/assets/left.png" id="4_y5m5x"]
+[ext_resource type="Texture2D" uid="uid://t5lydm50ne5y" path="res://Scenes_level/level_2/scene/assets/right.png" id="5_5m2m8"]
 [ext_resource type="PackedScene" uid="uid://dxkgedlcsyiy1" path="res://Scenes_level/level_2/player_fly/fox_fly.tscn" id="6_hj3ss"]
+[ext_resource type="PackedScene" uid="uid://dd8xoiagy7x5r" path="res://Scenes_level/level_2/scene/UI/UI.tscn" id="8_y5m5x"]
+[ext_resource type="PackedScene" uid="uid://uqrx1qikl11k" path="res://Scenes_level/level_2/others/heal.tscn" id="9_5m2m8"]
+[ext_resource type="PackedScene" uid="uid://dg7p5lpfe3lh8" path="res://Scenes_level/level_2/enemy/troop_1/enemy_troop_1.tscn" id="10_jepbf"]
+[ext_resource type="Script" uid="uid://5hjj1iqw1e1s" path="res://Scenes_level/level_2/enemy/troop_1/troop_create.gd" id="11_e8rqx"]
+[ext_resource type="Script" uid="uid://dsaqhb0str1tw" path="res://Scenes_level/level_2/enemy/troop_2/path_2d.gd" id="12_5mggh"]
+
+[sub_resource type="Curve2D" id="Curve2D_e8rqx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 41, -29, -24.2265, -10.0066, 24.2265, 10.0066, 68, 22, 0, 0, 0, 0, 151.197, 46.5946, 0.263332, 37.6564, -0.263332, -37.6564, 297, 61, 0, 0, 0, 0, 172.79, 71.8744, -0.526665, 53.7196, 0.526665, -53.7196, 18, 79, 0, 0, 0, 0, 154.357, 97.1542, 0, 41.343, 0, -41.343, 282, 122, 0, 0, 0, 0, 157.517, 138.76, 0.789994, 60.8295, -0.789994, -60.8295, 22, 147, 0, 0, 0, 0, 167.787, 176.943, 0.263331, 40.8163, -0.263331, -40.8163, 276, 205, 0, 0, 0, 0, 10, 240)
+}
+point_count = 13
 
 [node name="level_2" type="Node2D"]
 script = ExtResource("1_keesh")
 
-[node name="Portal20" parent="." instance=ExtResource("1_mlnv8")]
-position = Vector2(11, 168)
+[node name="Portal" type="Node" parent="."]
+
+[node name="Portal20" parent="Portal" instance=ExtResource("1_mlnv8")]
+position = Vector2(-26, 166)
 scale = Vector2(0.455169, 0.455169)
 next_scene = "res://World.tscn"
 
-[node name="Portal12" type="Sprite2D" parent="Portal20"]
+[node name="Portal12" type="Sprite2D" parent="Portal/Portal20"]
 position = Vector2(0, 2.19699)
 scale = Vector2(0.106002, 0.106002)
 texture = ExtResource("2_hj3ss")
 
-[node name="Portal23" parent="." instance=ExtResource("1_mlnv8")]
+[node name="Portal23" parent="Portal" instance=ExtResource("1_mlnv8")]
 position = Vector2(158, -14)
 next_scene = "res://Scenes_level/level_3/level_3.tscn"
 
@@ -43,3 +56,27 @@ texture = ExtResource("5_5m2m8")
 
 [node name="fox_fly" parent="." instance=ExtResource("6_hj3ss")]
 position = Vector2(161, 172)
+
+[node name="UI" parent="." instance=ExtResource("8_y5m5x")]
+
+[node name="heal" parent="." instance=ExtResource("9_5m2m8")]
+position = Vector2(186, 154)
+
+[node name="troop" parent="." instance=ExtResource("10_jepbf")]
+position = Vector2(155, 24)
+
+[node name="troop_create" type="Node2D" parent="." groups=["enemy"]]
+script = ExtResource("11_e8rqx")
+
+[node name="Timer_01" type="Timer" parent="troop_create"]
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="troop_create"]
+position = Vector2(6, -5)
+curve = SubResource("Curve2D_e8rqx")
+script = ExtResource("12_5mggh")
+
+[node name="Timer" type="Timer" parent="troop_create/Path2D"]
+
+[connection signal="timeout" from="troop_create/Timer_01" to="troop_create" method="_on_timer_01_timeout"]
+[connection signal="timeout" from="troop_create/Path2D/Timer" to="troop_create/Path2D" method="_on_timer_timeout"]

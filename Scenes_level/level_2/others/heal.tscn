@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://uqrx1qikl11k"]
+
+[ext_resource type="Script" uid="uid://b8cbfgconabm1" path="res://Scenes_level/level_2/others/heal.gd" id="1_a86yg"]
+[ext_resource type="Texture2D" uid="uid://bmrdwlip4e1sg" path="res://Scenes_level/level_2/enemy/assets/cells/cat_dogs/dog11.png" id="1_bbkay"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qh7s"]
+atlas = ExtResource("1_bbkay")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1y1g"]
+atlas = ExtResource("1_bbkay")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snbhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qh7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1y1g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1uyw"]
+radius = 10.5234
+
+[node name="heal" type="Area2D" groups=["heal"]]
+scale = Vector2(0.28508, 0.28508)
+script = ExtResource("1_a86yg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, 0)
+rotation = 1.5708
+scale = Vector2(1.41843, 1.41843)
+sprite_frames = SubResource("SpriteFrames_snbhr")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -3.11193
+shape = SubResource("CircleShape2D_u1uyw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1.02617, 1.02617)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

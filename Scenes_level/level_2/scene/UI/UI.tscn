@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd8xoiagy7x5r"]
+
+[ext_resource type="Script" uid="uid://d1wohqll5ql2t" path="res://Scenes_level/level_2/scene/UI/UI.gd" id="1_42a0x"]
+[ext_resource type="Texture2D" uid="uid://cged0wjmrhjwk" path="res://Scenes_level/level_2/scene/assets/LifeBarMiniUnder.png" id="1_cb18t"]
+[ext_resource type="Texture2D" uid="uid://dua7xpanmvpxh" path="res://Scenes_level/level_2/scene/assets/LifeBarMiniProgress.png" id="2_omocc"]
+
+[sub_resource type="FontFile" id="FontFile_cb18t"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_42a0x")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 30.0
+offset_bottom = 46.0
+scale = Vector2(5.88, 2.16)
+max_value = 3.0
+value = 3.0
+texture_under = ExtResource("1_cb18t")
+texture_progress = ExtResource("2_omocc")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -87.0
+offset_right = 16.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.629107, 0.421018)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontFile_cb18t")
+theme_override_font_sizes/font_size = 30
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1

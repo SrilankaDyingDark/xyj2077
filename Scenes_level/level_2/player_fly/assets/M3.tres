@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ch5etswbdtj50"]
+
+[ext_resource type="Texture2D" uid="uid://dcdiachjgs4s5" path="res://Scenes_level/level_2/enemy/assets/cells/flame/Hit.png" id="1_bvoni"]
+
+[resource]
+atlas = ExtResource("1_bvoni")
+region = Rect2(100, 0, 50, 50)

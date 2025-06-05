@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bv1u8ew2f7p8q"]
+
+[ext_resource type="Texture2D" uid="uid://dfuskhimnts8p" path="res://Scenes_level/level_2/player_fly/assets/death.png" id="1_twi0c"]
+
+[resource]
+atlas = ExtResource("1_twi0c")
+region = Rect2(0, 200, 341, 600)
