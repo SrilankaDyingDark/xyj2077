@@ -1,0 +1,110 @@
+[gd_scene load_steps=19 format=3 uid="uid://cmjt4ft8ssi12"]
+
+[ext_resource type="Script" uid="uid://bpp6xf5xgi4lt" path="res://Scenes_level/level_2/enemy/troop_2/enemy_troop_2.gd" id="1_70qkc"]
+[ext_resource type="Texture2D" uid="uid://c4ibvcnun1ni0" path="res://Scenes_level/level_2/enemy/assets/cells/monkey/FacesetBlack.png" id="1_ch8ay"]
+[ext_resource type="Texture2D" uid="uid://b3mn8fskyj2j3" path="res://Scenes_level/level_2/enemy/assets/cells/monkey/FacesetBrown.png" id="2_3f7mn"]
+[ext_resource type="PackedScene" uid="uid://uqrx1qikl11k" path="res://Scenes_level/level_2/others/heal.tscn" id="2_og3m8"]
+[ext_resource type="Texture2D" uid="uid://13npiios6ha8" path="res://Scenes_level/level_2/enemy/assets/cells/monkey/FacesetGrey.png" id="3_7w0ds"]
+[ext_resource type="PackedScene" uid="uid://bq8365wclw2ko" path="res://Scenes_level/level_2/others/M.tscn" id="3_jcc00"]
+[ext_resource type="PackedScene" uid="uid://bgl0isws3himu" path="res://Scenes_level/level_2/others/S.tscn" id="4_4ufkr"]
+[ext_resource type="Texture2D" uid="uid://cbo0fpl534xw6" path="res://Scenes_level/level_2/enemy/assets/cells/monkey/SpriteSheetBlack.png" id="5_gyt17"]
+[ext_resource type="Texture2D" uid="uid://bwhpfi3fo66d6" path="res://Scenes_level/level_2/enemy/assets/cells/monkey/SpriteSheetBrown.png" id="6_ltwgu"]
+[ext_resource type="Texture2D" uid="uid://budxjksqq6uv" path="res://Scenes_level/level_2/enemy/assets/cells/monkey/SpriteSheetGrey.png" id="7_v2qhq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyhl2"]
+atlas = ExtResource("5_gyt17")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgc6m"]
+atlas = ExtResource("5_gyt17")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo04q"]
+atlas = ExtResource("6_ltwgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlh64"]
+atlas = ExtResource("6_ltwgu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xq28"]
+atlas = ExtResource("7_v2qhq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwkge"]
+atlas = ExtResource("7_v2qhq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqwkw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ch8ay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3f7mn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7w0ds")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyhl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgc6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo04q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlh64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xq28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwkge")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70qkc"]
+size = Vector2(75, 75)
+
+[node name="enemy_troop_2" type="PathFollow2D" groups=["enemy"]]
+position = Vector2(-1.19209e-07, -4.76837e-07)
+rotation = 1.5708
+scale = Vector2(0.103767, 0.103767)
+script = ExtResource("1_70qkc")
+heal = ExtResource("2_og3m8")
+S = ExtResource("3_jcc00")
+M = ExtResource("4_4ufkr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.489208, 0.489213)
+rotation = 1.5708
+scale = Vector2(1.91379, 1.91379)
+sprite_frames = SubResource("SpriteFrames_sqwkw")
+animation = &"Idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 2048
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7.62939e-06, -1.90735e-06)
+rotation = 1.5708
+scale = Vector2(0.97, 0.97)
+shape = SubResource("RectangleShape2D_70qkc")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

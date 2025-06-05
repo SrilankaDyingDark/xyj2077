@@ -5,4 +5,3 @@ func _ready():
 	Global.world = self
 func _exit_tree() -> void:
 	Global.world = null
-	
