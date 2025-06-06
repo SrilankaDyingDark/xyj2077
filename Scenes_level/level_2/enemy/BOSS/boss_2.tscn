@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8cvlcepf26bp"]
+
+[ext_resource type="Script" uid="uid://bq343iie2mvbe" path="res://Scenes_level/level_2/enemy/BOSS/boss_2.gd" id="1_jft1f"]
+[ext_resource type="Shader" uid="uid://dlr76ik5ajdh0" path="res://Scenes_level/level_2/enemy/BOSS/boss_2.gdshader" id="2_hq6gw"]
+[ext_resource type="Texture2D" uid="uid://jftekslm6ui7" path="res://Scenes_level/level_2/enemy/assets/2TenguRed/Idle.png" id="2_j351s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgdh7"]
+shader = ExtResource("2_hq6gw")
+shader_parameter/flash_state = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq6gw"]
+atlas = ExtResource("2_j351s")
+region = Rect2(0, 0, 82, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgdh7"]
+atlas = ExtResource("2_j351s")
+region = Rect2(82, 0, 82, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qj8i"]
+atlas = ExtResource("2_j351s")
+region = Rect2(164, 0, 82, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfsy6"]
+atlas = ExtResource("2_j351s")
+region = Rect2(246, 0, 82, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67rwb"]
+atlas = ExtResource("2_j351s")
+region = Rect2(328, 0, 82, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofx80"]
+atlas = ExtResource("2_j351s")
+region = Rect2(410, 0, 82, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyg72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq6gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgdh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qj8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfsy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67rwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofx80")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ht17a"]
+radius = 6.25
+
+[node name="BOSS_2" type="Node2D"]
+scale = Vector2(1.6, 1.6)
+script = ExtResource("1_jft1f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_tgdh7")
+position = Vector2(-1.19209e-07, -1.19209e-07)
+scale = Vector2(0.49638, 0.49638)
+sprite_frames = SubResource("SpriteFrames_jyg72")
+animation = &"Idle"
+frame_progress = 0.392535
+
+[node name="spin" type="Node2D" parent="."]
+
+[node name="Timer_interval" type="Timer" parent="."]
+
+[node name="Timer_end" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="Timer_switch" type="Timer" parent="."]
+wait_time = 6.1
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 2048
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5.96046e-08)
+shape = SubResource("CircleShape2D_ht17a")
+
+[connection signal="timeout" from="Timer_interval" to="." method="_on_timer_interval_timeout"]
+[connection signal="timeout" from="Timer_end" to="." method="_on_timer_end_timeout"]
+[connection signal="timeout" from="Timer_switch" to="." method="_on_timer_switch_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

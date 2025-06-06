@@ -36,6 +36,7 @@ project/assembly_name="教程"
 folder_colors={
 "res://Scenes_level/level_2/": "yellow",
 "res://Scenes_level/level_2/enemy/": "orange",
+"res://Scenes_level/level_2/enemy/BOSS/": "gray",
 "res://Scenes_level/level_2/enemy/assets/": "gray",
 "res://Scenes_level/level_2/enemy/troop_1/": "gray",
 "res://Scenes_level/level_2/enemy/troop_2/": "gray",

@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1uyw"]
-radius = 10.5234
+radius = 14.0312
 
 [node name="M" type="Area2D" groups=["M"]]
 scale = Vector2(0.28508, 0.28508)
@@ -40,9 +40,10 @@ frame_progress = 0.391111
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -3.11193
+scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_u1uyw")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(1.02617, 1.02617)
+scale = Vector2(1.28, 1.28)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -40,10 +40,12 @@ sprite_frames = SubResource("SpriteFrames_snbhr")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.90735e-06, 0)
 rotation = -3.11193
+scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_u1uyw")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(1.02617, 1.02617)
+scale = Vector2(1.27, 1.27)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
