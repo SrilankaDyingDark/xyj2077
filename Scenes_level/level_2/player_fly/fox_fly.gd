@@ -18,6 +18,12 @@ var shoot_begin = true
 
 var white = 0		# 受到攻击变白
 
+# 子弹控制
+var wait_time = 10
+var one_shot = true
+var autostart = false
+
+###################################################
 func _physics_process(delta):
 	if not death:
 		movement(delta)
@@ -30,7 +36,9 @@ func _physics_process(delta):
 			shader_mat.set("shader_parameter/flash_state", white)
 			if white >= 0:
 				white -= 5 * delta
-
+				
+				
+######################################################
 func movement(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
@@ -94,15 +102,20 @@ func _on_area_2d_area_entered(area: Area2D):
 	if area.is_in_group("O"):
 		bullet_type = 0
 		area.queue_free()
+		$Timer_bllet_reset.stop()		# 停止限时
 
 	if area.is_in_group("S"):
 		bullet_type = 1
 		area.queue_free()
+		$Timer_bllet_reset.start()		# 启动限时
 		
 	if area.is_in_group("M"):
 		bullet_type = 2
 		area.queue_free()
+		$Timer_bllet_reset.start()		# 启动限时
 		
+func _on_timer_bllet_reset_timeout() -> void:
+	bullet_type = 0			
 		
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "death":

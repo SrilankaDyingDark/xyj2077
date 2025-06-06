@@ -1,26 +1,27 @@
 extends Node2D
 
-# BOSS具有1/2免伤效果
-
-signal hp_changed(hp)
-
-
+# BOSS具有1/10免伤效果
+######################################################
+# 基础
 var spin_speed = 100
 var await_time = 0.2
 var spawn_count = 4
 var semi = 20
 
+# 攻击
+var att_begin = false
 var boss_2_bullet = preload("res://Scenes_level/level_2/enemy/BOSS/boss_2_bullet.tscn")
-
 var att_method = 0
 var act_once = true
 var switch_once = true
 
+# 生存
 var HP = 100
 var hp_one = true
 
-var att_begin = false
+#受击
 var white = 0
+
 
 ######################################################
 func _ready() -> void:
@@ -38,9 +39,12 @@ func _process(delta: float) -> void:
 				switch_once = false
 				
 			if att_method != 0 and act_once:
-				boss_attack()
-				$Timer_end.start()
-				act_once = false
+				if $spin.get_child_count() == 0:
+					spawn_place()  # 🔥 在攻击前生成子弹发射点
+					boss_attack()
+					$Timer_end.start()
+					act_once = false
+			
 	if HP <= 0 and hp_one:
 		att_begin = false
 		hp_one = false
@@ -50,17 +54,18 @@ func _process(delta: float) -> void:
 		$Timer_interval.stop()
 	
 	# boss受击变白
-		var shader_mat := $AnimatedSprite2D.material as ShaderMaterial
-		if shader_mat:
-			shader_mat.set("shader_parameter/flash_state", white)
-			if white >= 0:
-				white -= 5 * delta
+	var shader_mat := $AnimatedSprite2D.material as ShaderMaterial
+	if shader_mat:
+		shader_mat.set("shader_parameter/flash_state", white)
+		if white >= 0:
+			white -= 10 * delta
 
 
 ######################################################
 func boss_attack():
 	if att_method == 0:
 		$Timer_interval.stop()
+		
 	if att_method == 1:
 		spin_speed = 100
 		await_time = 0.1
@@ -117,10 +122,14 @@ func _on_timer_switch_timeout() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
 		if HP > 0:
-			white = 1.0
-			area.queue_free()
+			white = 0.5
+			
+			#特防霰弹
 			if area.bullet_type == 1:
-				HP -= 0.5
+				HP -= 0.1
+		
 			elif area.bullet_type == 2:
-				HP -= 1
-			emit_signal("hp_changed", HP)
+				HP -= 0.5
+				
+			elif area.bullet_type == 0:
+				HP -= 0.2

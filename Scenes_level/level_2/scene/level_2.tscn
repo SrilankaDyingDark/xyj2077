@@ -134,7 +134,7 @@ libraries = {
 }
 
 [node name="S" parent="AnimationPlayer" instance=ExtResource("15_yv8p6")]
-position = Vector2(180, 106)
+position = Vector2(158, 104)
 
 [connection signal="timeout" from="troop_create/Timer_01" to="troop_create" method="_on_timer_01_timeout"]
 [connection signal="timeout" from="troop_create/Path2D/Timer" to="troop_create/Path2D" method="_on_timer_timeout"]

@@ -1,15 +1,19 @@
 extends Node2D
 
-var speed = 200
+
+var speed = 100
 
 
+############################################################
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
 	position += transform.x * speed * delta
 	
-
+	
+	
+############################################################
 # 离开屏幕后消失
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
